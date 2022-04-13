@@ -50,7 +50,6 @@ export const loadSearchResults = async function (query) {
     state.search.query = query;
 
     const data = await AJAX(`${API_URL}?search=${query}&key=${DEV_API_KEY}`);
-    console.log(data);
 
     state.search.results = data.data.recipes.map(rec => {
       return {
@@ -62,7 +61,6 @@ export const loadSearchResults = async function (query) {
       };
     });
 
-    console.log(state.search.results);
     state.search.page = 1;
   } catch (err) {
     throw err;
@@ -73,7 +71,6 @@ export const getSearchResultPage = function (page = state.search.page) {
   state.search.page = page;
   const start = (page - 1) * state.search.resultsPerPage;
   const end = page * state.search.resultsPerPage;
-  console.log(state.search.results.slice(start, end));
   return state.search.results.slice(start, end);
 };
 
@@ -112,7 +109,6 @@ const init = function () {
 };
 
 init();
-console.log(state.bookmarks);
 
 export const uploadRecipe = async function (newRecipe) {
     try{

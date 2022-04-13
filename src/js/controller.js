@@ -50,7 +50,7 @@ const controlSearchResults = async function () {
 
     paginationView.render(model.state.search);
   } catch (err) {
-    console.log(err);
+    resultsView.renderError(err)
   }
 };
 
@@ -100,7 +100,6 @@ const controlAddRecipe = async function (newRecipe) {
       addRecipeView._toggleWindow()
     }, MODAL_CLOSE_SEC * 1000);
   } catch (error) {
-    console.log(error)
     addRecipeView.renderError(error.message)
   }
 };
